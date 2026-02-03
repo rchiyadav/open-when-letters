@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Love 💖</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --pink1:#ffd6e3;
+  --pink2:#f7b4c7;
+  --card:#ffffffea;
+  --accent:#e85a8a;
+  --text:#a14c6d;
+}
+
+*{box-sizing:border-box;}
+
+body{
+  margin:0;
+  min-height:100vh;
+  background:linear-gradient(135deg,var(--pink1),var(--pink2));
+  font-family:'Quicksand',sans-serif;
+  color:var(--text);
+  display:flex;
+  justify-content:center;
+}
+
+.app{
+  width:100%;
+  max-width:1100px;
+  padding:40px 20px 80px;
+  text-align:center;
+}
+
+/* ---------- HERO ---------- */
+.hero{
+  margin-top:70px;
+}
+
+.hero h1{
+  font-family:'Pacifico',cursive;
+  font-size:3.2rem;
+  margin-bottom:10px;
+  color:#c74373;
+}
+
+.hero .subtitle{
+  opacity:.9;
+  margin-bottom:40px;
+  font-size:1.1rem;
+}
+
+.open-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  background:#e85a8a;
+  color:white;
+  padding:14px 30px;
+  border-radius:30px;
+  text-decoration:none;
+  font-weight:600;
+  box-shadow:0 10px 25px rgba(232,90,138,.35);
+  transition:.25s;
+}
+.open-btn:hover{transform:translateY(-3px);}
+
+/* ---------- GRID ---------- */
+.section-title{
+  font-family:'Pacifico',cursive;
+  font-size:2.2rem;
+  margin:70px 0 5px;
+  color:#c74373;
+}
+
+.section-sub{
+  margin-bottom:35px;
+  opacity:.85;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:24px;
+}
+
+.card{
+  background:var(--card);
+  border-radius:24px;
+  padding:26px 20px 22px;
+  box-shadow:0 12px 30px rgba(0,0,0,.08);
+  cursor:pointer;
+  transition:.25s;
+  position:relative;
+  overflow:hidden;
+}
+.card:hover{
+  transform:translateY(-6px) scale(1.02);
+  box-shadow:0 18px 40px rgba(0,0,0,.12);
+}
+
+.card .emoji{
+  font-size:2.1rem;
+  margin-bottom:6px;
+}
+
+.card h3{
+  font-family:'Pacifico',cursive;
+  font-size:1.3rem;
+  margin:6px 0;
+  color:#c74373;
+}
+
+.card p{
+  font-size:.95rem;
+  opacity:.85;
+}
+
+.card .heart{
+  position:absolute;
+  bottom:14px;
+  right:16px;
+  opacity:.8;
+}
+
+/* ---------- LETTER PAGE ---------- */
+.view{
+  display:none;
+  animation:fade .35s ease;
+}
+
+.view.active{
+  display:block;
+}
+
+.letter-box{
+  background:var(--card);
+  border-radius:30px;
+  padding:40px 28px 46px;
+  max-width:820px;
+  margin:0 auto;
+  box-shadow:0 18px 40px rgba(0,0,0,.1);
+  position:relative;
+}
+
+.letter-title{
+  font-family:'Pacifico',cursive;
+  font-size:2.3rem;
+  color:#c74373;
+  margin-bottom:18px;
+}
+
+.letter-text{
+  font-size:1.05rem;
+  line-height:1.75;
+  white-space:pre-line;
+}
+
+.media-box{
+  margin-top:25px;
+}
+
+.media-box video{
+  width:100%;
+  border-radius:18px;
+  box-shadow:0 10px 25px rgba(0,0,0,.15);
+}
+
+.song-btn{
+  margin-top:18px;
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  background:#e85a8a;
+  color:white;
+  padding:12px 26px;
+  border-radius:26px;
+  text-decoration:none;
+  font-weight:600;
+  box-shadow:0 10px 25px rgba(232,90,138,.35);
+}
+
+.signature{
+  margin-top:18px;
+  font-family:'Pacifico',cursive;
+  font-size:1.2rem;
+  color:#c74373;
+}
+
+.back{
+  margin-top:30px;
+  display:inline-block;
+  color:#c74373;
+  cursor:pointer;
+  font-weight:600;
+}
+
+@keyframes fade{
+  from{opacity:0;transform:translateY(10px);}
+  to{opacity:1;transform:none;}
+}
+
+/* ---------- FOOT ---------- */
+footer{
+  margin-top:80px;
+  opacity:.75;
+  font-size:.9rem;
+}
+</style>
+</head>
+<body>
+
+<div class="app">
+
+<!-- ================= HOME PAGE ================= -->
+<div id="home" class="view active">
+
+  <div class="hero">
+    <h1>For My Love 💖</h1>
+    <div class="subtitle">I made something special just for you… Click below to see your surprise ✨</div>
+    <button class="open-btn" onclick="showLetters()">Open Your Surprise 💌</button>
+  </div>
+
+  <div id="lettersSection" style="display:none;">
+    <h2 class="section-title">Open When Letters</h2>
+    <div class="section-sub">Pick one based on how you're feeling 💕</div>
+
+    <div class="grid">
+      <div class="card" onclick="openLetter('sad')">
+        <div class="emoji">🥺</div>
+        <h3>Open When You're Sad</h3>
+        <p>Let me cheer you up.</p>
+        <div class="heart">💌</div>
+      </div>
+
+      <div class="card" onclick="openLetter('miss')">
+        <div class="emoji">🥹</div>
+        <h3>Open When You Miss Me</h3>
+        <p>I miss you too.</p>
+        <div class="heart">💌</div>
+      </div>
+
+      <div class="card" onclick="openLetter('stressed')">
+        <div class="emoji">😥</div>
+        <h3>Open When You're Stressed</h3>
+        <p>Breathe, love.</p>
+        <div class="heart">💌</div>
+      </div>
+
+      <div class="card" onclick="openLetter('dontlove')">
+        <div class="emoji">💔</div>
+        <h3>When You Feel I Don't Love You</h3>
+        <p>Please read this.</p>
+        <div class="heart">💌</div>
+      </div>
+
+      <div class="card" onclick="openLetter('mad')">
+        <div class="emoji">😤</div>
+        <h3>Open When You're Mad at Me</h3>
+        <p>I’m listening.</p>
+        <div class="heart">💌</div>
+      </div>
+
+      <div class="card" onclick="openLetter('happy')">
+        <div class="emoji">😊</div>
+        <h3>Open When You're Happy</h3>
+        <p>Let’s celebrate.</p>
+        <div class="heart">💌</div>
+      </div>
+
+      <div class="card" onclick="openLetter('cantSleep')">
+        <div class="emoji">🌙</div>
+        <h3>Open When You Can't Sleep</h3>
+        <p>Sweet dreams.</p>
+        <div class="heart">💌</div>
+      </div>
+
+      <div class="card" onclick="openLetter('sick')">
+        <div class="emoji">🤒</div>
+        <h3>Open When You're Sick</h3>
+        <p>Get well soon.</p>
+        <div class="heart">💌</div>
+      </div>
+    </div>
+
+    <footer>Made with 💗 just for you</footer>
+  </div>
+
+</div>
+
+<!-- ================= LETTER PAGE ================= -->
+<div id="letterView" class="view">
+  <div class="letter-box">
+    <div id="letterTitle" class="letter-title"></div>
+    <div id="letterText" class="letter-text"></div>
+
+    <div id="mediaArea" class="media-box" style="display:none;">
+      <video id="letterVideo" controls></video>
+      <br>
+      <a id="songLink" class="song-btn" target="_blank">🎵 Our Song</a>
+      <div class="signature">With all my love,<br>Your Girl 💕</div>
+    </div>
+
+    <div class="back" onclick="goHome()">← Back to letters</div>
+  </div>
+</div>
+
+</div>
+
+<script>
+function showLetters(){
+  document.getElementById('lettersSection').style.display = "block";
+  window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'});
+}
+
+const letters = {
+  sad: {
+    title: "Open When You're Sad 🥺💗",
+    text: `Hey my love,
+
+I know things feel heavy right now, and I wish I could be there holding you tight. But please remember — you're never alone. I’m always here, even when we’re apart.
+
+You are strong, beautiful, and so deeply loved. Close your eyes and imagine me hugging you for as long as you need.
+
+I love you endlessly 💖`,
+    video: "PASTE_VIDEO_LINK_HERE",
+    song: "PASTE_SONG_LINK_HERE"
+  },
+
+  miss: {
+    title: "Open When You Miss Me 🥹💗",
+    text: `Hey baby,
+
+I miss you more than words can explain. Every little thing reminds me of you, and I wish I could teleport and hug you right now.
+
+Distance can’t touch what I feel for you. You’re always in my heart 💕`,
+    video: "PASTE_VIDEO_LINK_HERE",
+    song: "PASTE_SONG_LINK_HERE"
+  },
+
+  stressed: {
+    title: "Open When You're Stressed 😥💗",
+    text: `Hey love,
+
+Pause. Breathe. You’re doing better than you think. One step at a time — I believe in you completely.
+
+I’m proud of you always 💖`,
+    video: "PASTE_VIDEO_LINK_HERE",
+    song: "PASTE_SONG_LINK_HERE"
+  },
+
+  dontlove: {
+    title: "When You Feel I Don't Love You 💔💗",
+    text: `Hey you,
+
+If you ever doubt my love, read this slowly:
+I love you. Completely. Always.
+
+My heart is yours — on your best days and your worst days 💕`,
+    video: "PASTE_VIDEO_LINK_HERE",
+    song: "PASTE_SONG_LINK_HERE"
+  },
+
+  mad: {
+    title: "Open When You're Mad at Me 😤💗",
+    text: `Hey love,
+
+I know you’re upset — and your feelings matter. If I hurt you, I’m truly sorry. You mean too much to me to ever want distance between us.
+
+Let’s talk, okay? I love you 💖`,
+    video: "PASTE_VIDEO_LINK_HERE",
+    song: "PASTE_SONG_LINK_HERE"
+  },
+
+  happy: {
+    title: "Open When You're Happy 😊💗",
+    text: `Hey sunshine,
+
+Your smile is my favorite thing in the world. Seeing you happy fills my heart more than you know.
+
+Let’s celebrate together 💕`,
+    video: "PASTE_VIDEO_LINK_HERE",
+    song: "PASTE_SONG_LINK_HERE"
+  },
+
+  cantSleep: {
+    title: "Open When You Can't Sleep 🌙💗",
+    text: `Hey my love,
+
+If you’re awake right now, imagine me next to you, holding your hand and whispering how much I care.
+
+Sweet dreams 💖`,
+    video: "PASTE_VIDEO_LINK_HERE",
+    song: "PASTE_SONG_LINK_HERE"
+  },
+
+  sick: {
+    title: "Open When You're Sick 🤒💗",
+    text: `Hey baby,
+
+I wish I could be there taking care of you right now. Please rest and drink water — I need your smile back.
+
+Get better soon 💕`,
+    video: "PASTE_VIDEO_LINK_HERE",
+    song: "PASTE_SONG_LINK_HERE"
+  }
+};
+
+function openLetter(key){
+  document.getElementById('home').classList.remove('active');
+  document.getElementById('letterView').classList.add('active');
+
+  document.getElementById('letterTitle').innerText = letters[key].title;
+  document.getElementById('letterText').innerText = letters[key].text;
+
+  const media = document.getElementById('mediaArea');
+  const video = document.getElementById('letterVideo');
+  const song = document.getElementById('songLink');
+
+  if(letters[key].video){
+    media.style.display = "block";
+    video.src = letters[key].video;
+    song.href = letters[key].song;
+  } else {
+    media.style.display = "none";
+  }
+
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function goHome(){
+  document.getElementById('letterView').classList.remove('active');
+  document.getElementById('home').classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+</script>
+
+</body>
+</html>
